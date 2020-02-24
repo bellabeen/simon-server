@@ -35,10 +35,10 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div id="container1">
-					<br>
-				</div>
+				<div id="container1"></div>
 				<div id="container2"></div>
+				<div id="container3"></div>
+				<div id="container4"></div>
 			</div>
 		</div>
 	</body>
@@ -47,18 +47,18 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 	<?php
 		foreach($resultAll as $result){
 			echo($result['suhu']);'<br>';
-			echo($result['waktu']);'<br>';
 			$result['suhu'];
 			$result['waktu'];
-			echo"
+		}
+		?>
+		<!-- <?php echo "$result[suhu]";?> -->
 			<script>
-			// var data_ph = $result[suhu];
 				var chart = new Highcharts.Chart({
 					  chart: {
 						 renderTo: 'container1'
 					  },
 					  title: {
-							text: 'Grafik Data Suhu Harian'
+							text: 'Grafik Data Suhu'
 						},
 	   
 					xAxis: {
@@ -69,7 +69,7 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 						   type: 'datetime',
 						   showFirstLabel:true,
 						   showLastLabel:true,
-						   min:Date.UTC(2020,1,21),
+						   min:Date.UTC(2020,1,25),
 						   minRange: 24 * 360 * 100,
 						   dateTimeLabelFormats : {
 							   hour: '%I %p',
@@ -78,23 +78,112 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 					},
 					  series: [{	
 					   	pointInterval: 900 * 1000,
-						 pointStart:Date.UTC(2020,1,21,), 
+						 pointStart:Date.UTC(2020,1,25,), 
 						// data: [10, 7, 9, 15]
-						data: [($result[suhu])]
+						
+						data: [<?php echo "$result[suhu]";?>]
+					  }]
+			   });
+			 </script>
+			 
+
+			 <script>
+				var chart = new Highcharts.Chart({
+					  chart: {
+						 renderTo: 'container2'
+					  },
+					  title: {
+							text: 'Grafik Data Kelembapan Udara'
+						},
+	   
+					xAxis: {
+						title: {
+						   enabled: true,
+						   text: 'Hours of the Day'
+						   },
+						   type: 'datetime',
+						   showFirstLabel:true,
+						   showLastLabel:true,
+						   min:Date.UTC(2020,1,25),
+						   minRange: 24 * 360 * 100,
+						   dateTimeLabelFormats : {
+							   hour: '%I %p',
+							   minute: '%I:%M %p'
+							   }
+					},
+					  series: [{	
+					   	pointInterval: 900 * 1000,
+						 pointStart:Date.UTC(2020,1,25,), 
+						// data: [10, 7, 9, 15]
+						data: [<?php echo "$result[kelembapan_udara]";?>]
 					  }]
 			   });
 		   </script>
-		   ";
-		}
-	?>
 
-
-
-<?php echo "ini";
- print_r($result['suhu']);
- echo "tanggal";
- print_r($result['waktu']); ?>
-
+<script>
+				var chart = new Highcharts.Chart({
+					  chart: {
+						 renderTo: 'container3'
+					  },
+					  title: {
+							text: 'Grafik Data Kelembapan Tanah'
+						},
+	   
+					xAxis: {
+						title: {
+						   enabled: true,
+						   text: 'Hours of the Day'
+						   },
+						   type: 'datetime',
+						   showFirstLabel:true,
+						   showLastLabel:true,
+						   min:Date.UTC(2020,1,25),
+						   minRange: 24 * 360 * 100,
+						   dateTimeLabelFormats : {
+							   hour: '%I %p',
+							   minute: '%I:%M %p'
+							   }
+					},
+					  series: [{	
+					   	pointInterval: 900 * 1000,
+						 pointStart:Date.UTC(2020,1,25,), 
+						// data: [10, 7, 9, 15]
+						data: [<?php echo "$result[kelembapan_tanah]";?>]
+					  }]
+			   });
+		   </script>
+<script>
+				var chart = new Highcharts.Chart({
+					  chart: {
+						 renderTo: 'container4'
+					  },
+					  title: {
+							text: 'Grafik Data pH'
+						},
+	   
+					xAxis: {
+						title: {
+						   enabled: true,
+						   text: 'Hours of the Day'
+						   },
+						   type: 'datetime',
+						   showFirstLabel:true,
+						   showLastLabel:true,
+						   min:Date.UTC(2020,1,25),
+						   minRange: 24 * 360 * 100,
+						   dateTimeLabelFormats : {
+							   hour: '%I %p',
+							   minute: '%I:%M %p'
+							   }
+					},
+					  series: [{	
+					   	pointInterval: 900 * 1000,
+						 pointStart:Date.UTC(2020,1,25,), 
+						// data: [10, 7, 9, 15]
+						data: [<?php echo "$result[ph]";?>]
+					  }]
+			   });
+		   </script>
 <!-- $(function () {
   var chart = new Highcharts.Chart({
 

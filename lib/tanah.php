@@ -5,6 +5,7 @@ class Sensor{
     private $db = null;
     public  $id;
     private $suhu=null;
+    private $kelembapan_udara=null;
     private $kelembapan_tanah=null;  
     private $ph=null;  
 
@@ -15,10 +16,11 @@ class Sensor{
         }
     }
 
-    function setValue($suhu, $kelembapan_tanah, $ph){
+    function setValue($suhu, $kelembapan_udara, $kelembapan_tanah, $ph){
         // $this();
         // $this->id = $id;
         $this->suhu = $suhu;
+        $this->kelembapan_udara = $kelembapan_udara;
         $this->kelembapan_tanah = $kelembapan_tanah;
         $this->ph = $ph;
 
@@ -38,6 +40,7 @@ class Sensor{
         else{
             $kueri = "INSERT INTO ".$this->table_name." SET ";
             $kueri .= "suhu='".$this->suhu ."',";
+            $kueri .= "kelembapan_udara='".$this->kelembapan_udara ."',";
             $kueri .= "kelembapan_tanah='".$this->kelembapan_tanah ."',";
             $kueri .= "ph='".$this->ph."'";
             $hasil = $this->db->query($kueri);
@@ -53,7 +56,7 @@ class Sensor{
     }
 
     //fungsi update data
-    function update($id, $suhu, $kelembapan_tanah, $ph){
+    function update($id, $suhu, $kelembapan_udara, $kelembapan_tanah, $ph){
         $hasil= $this->getSensorPilihan($id);
         $count=count($hasil["data"]);
         if ($count==0){ 
@@ -65,21 +68,25 @@ class Sensor{
             return array('msg' => "Kode tidak boleh kosong, tidak berhasil disimpan" );
         } else {
             $this->setValue($hasil["data"][0]["suhu"],
+            $hasil["data"][0]["kelembapan_udara"],
             $hasil["data"][0]["kelembapan_tanah"],
             $hasil["data"][0]["ph"]
                     );
 
             if ($suhu!=null) $this->suhu=$suhu;
+            if ($kelembapan_udara!=null) $this->kelembapan_udara=$kelembapan_udara;
             if ($kelembapan_tanah!=null) $this->kelembapan_tanah=$kelembapan_tanah;
             if ($ph!=null) $this->ph=$ph;
 
             $kueri .= "suhu='".$this->suhu ."',";
+            $kueri .= "kelembapan_udara='".$this->kelembapan_udara ."',";
             $kueri .= "kelembapan_tanah='".$this->kelembapan_tanah ."',";
             $kueri .= "ph='".$this->ph."'";
 
 
             $kueri = "UPDATE ".$this->table_name." SET ";
             $kueri .= "suhu='".$this->suhu ."',";
+            $kueri .= "kelembapan_udara='".$this->kelembapan_udara."',";
             $kueri .= "kelembapan_tanah='".$this->kelembapan_tanah."',";
             $kueri .= "ph='".$this->ph ."'";
             

@@ -38,6 +38,7 @@ $resultWaktu = isset($getWaktu['data']) ? $getWaktu['data']: [];
 			<?php
 				foreach($resultFilter as $result){
 					$result['suhu'];
+					$result['kelembapan_udara'];
 					$result['kelembapan_tanah'];
 					$result['ph'];
 					$result['waktu'];
@@ -56,7 +57,17 @@ $resultWaktu = isset($getWaktu['data']) ? $getWaktu['data']: [];
 			<div class="col-md-3">
 				<table class="table table-bordered">
 					<thead>
-						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">Kelembapan Tanah (%)</p></center></td>
+						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">Kelembapan Udara</p></center></td>
+					</thead>
+					<tr class="danger">
+					<td><center><p class="tebel gede" style="margin-top:5px"><?php echo "$result[kelembapan_udara]";?></p></center></td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-3">
+				<table class="table table-bordered">
+					<thead>
+						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">Kelembapan Tanah</p></center></td>
 					</thead>
 					<tr class="info">
 					<td><center><p class="tebel gede" style="margin-top:5px"><?php echo "$result[kelembapan_tanah]";?></p></center></td>
@@ -66,7 +77,7 @@ $resultWaktu = isset($getWaktu['data']) ? $getWaktu['data']: [];
 			<div class="col-md-3">
 				<table class="table table-bordered">
 					<thead>
-						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">pH (&degC)</p></center></td>
+						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">pH</p></center></td>
 					</thead>
 					<tr class="warning">
 					<td><center><p class="tebel gede" style="margin-top:5px"><?php echo "$result[ph]";?></p></center></td>
@@ -86,7 +97,7 @@ $resultWaktu = isset($getWaktu['data']) ? $getWaktu['data']: [];
 						<tr>
 							<td>Interval Update</td>
 							<td>:</td>
-							<td>5 Detik</td>
+							<td>2 Menit</td>
 						</tr>
 						<tr>
 							<td>Jumlah Data</td>

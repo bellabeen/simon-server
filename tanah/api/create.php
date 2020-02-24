@@ -11,12 +11,11 @@ $sensor = new Sensor();
 $format= new DataFormat();
 
 $suhu = isset($_GET['suhu']) ? $_GET['suhu']: null;
+$kelembapan_udara = isset($_GET['kelembapan_udara']) ? $_GET['kelembapan_udara']: null;
 $kelembapan_tanah = isset($_GET['kelembapan_tanah']) ? $_GET['kelembapan_tanah']: null;
 $ph = isset($_GET['ph']) ? $_GET['ph']: null;
-$sensor->setValue($suhu, $kelembapan_tanah, $ph);
+$sensor->setValue($suhu, $kelembapan_udara, $kelembapan_tanah, $ph);
 $result = $sensor->create();
-date_default_timezone_set("Asia/Bangkok");
-echo date_default_timezone_get();
 echo $format->asJSONAll($result);
 
 ?>

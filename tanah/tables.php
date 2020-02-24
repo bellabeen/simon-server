@@ -7,15 +7,7 @@ $sensor = new Sensor();
 $format=new DataFormat();
 $get=$sensor->getAll();
 $resultArray = isset($get['data']) ? $get['data'] : [];
-date_default_timezone_set("Asia/Bangkok");
-echo date_default_timezone_get();
 ?>
-
-<?php
-
-?>
-
-
 <html>
 	<head>
 		<title>Sistem Monitoring</title>
@@ -43,6 +35,7 @@ echo date_default_timezone_get();
 					<thead>
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">No</p></center></td>
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">Suhu (&degC)</p></center></td>
+						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">Kelembapan Udara</p></center></td>
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">Kelembapan Tanah</p></center></td>
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">pH</p></center></td>
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">Waktu</p></center></td>
@@ -56,6 +49,7 @@ echo date_default_timezone_get();
 						"<tr>
 						<td><center>$no</center></td>
 						<td><center>$result[suhu]</center></td>
+						<td><center>$result[kelembapan_udara]</center></td>
 						<td><center>$result[kelembapan_tanah]</center></td>
 						<td><center>$result[ph]</center></td>
 						<td><center>$result[waktu]</center></td>

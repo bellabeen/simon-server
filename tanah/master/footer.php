@@ -12,7 +12,7 @@
 <br>
 <div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<center><h5 style="text-align:bottom;" class="hitam tebel">Copyright </h5></center>
+				<center><h5 style="text-align:bottom;" class="hitam tebel">Copyright 2020 </h5></center>
 			</div>
 			<div class="col-md-2">
 				&nbsp;
