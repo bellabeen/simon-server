@@ -45,14 +45,16 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 </html>
 
 	<?php
+		$data_suhu = array();
 		foreach($resultAll as $result){
-			echo($result['suhu']);'<br>';
-			$result['suhu'];
-			$result['waktu'];
+			// echo($result['suhu']);'<br>';
+
+			array_push($data_suhu,array(strtotime($result['waktu']),$result['suhu']));
+			
 		}
+		// die (json_encode($data_suhu));
 		?>
-		<!-- <?php echo "$result[suhu]";?> -->
-			<script>
+			<!-- <script>
 				var chart = new Highcharts.Chart({
 					  chart: {
 						 renderTo: 'container1'
@@ -69,24 +71,49 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 						   type: 'datetime',
 						   showFirstLabel:true,
 						   showLastLabel:true,
-						   min:Date.UTC(2020,1,25),
-						   minRange: 24 * 360 * 100,
+						   
 						   dateTimeLabelFormats : {
 							   hour: '%I %p',
 							   minute: '%I:%M %p'
 							   }
 					},
 					  series: [{	
-					   	pointInterval: 900 * 1000,
-						 pointStart:Date.UTC(2020,1,25,), 
-						// data: [10, 7, 9, 15]
-						
-						data: [<?php echo "$result[suhu]";?>]
+						data: [<?php echo json_encode($data_suhu);?>]
+					  }]
+			   });
+			 </script> -->
+
+<script>
+				var chart = new Highcharts.Chart({
+					  chart: {
+						 renderTo: 'container1'
+					  },
+					  title: {
+							text: 'Grafik Data Suhu'
+						},
+	   
+					xAxis: {
+						title: {
+						   enabled: true,
+						   text: 'Hours of the Day'
+						   },
+						   type: 'datetime',
+						   showFirstLabel:true,
+						   showLastLabel:true,
+						   
+						   dateTimeLabelFormats : {
+							   hour: '%I %p',
+							   minute: '%I:%M %p'
+							   }
+					},
+					  series: [{	
+						data: [<?php echo json_encode($data_suhu);?>]
 					  }]
 			   });
 			 </script>
 			 
-
+			
+<!-- 
 			 <script>
 				var chart = new Highcharts.Chart({
 					  chart: {
@@ -183,7 +210,7 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 						data: [<?php echo "$result[ph]";?>]
 					  }]
 			   });
-		   </script>
+		   </script> -->
 <!-- $(function () {
   var chart = new Highcharts.Chart({
 
