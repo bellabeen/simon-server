@@ -35,6 +35,7 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 				</div>
 			</div>
 			<div class="col-md-6">
+				<div id="container"></div>
 				<div id="container1"></div>
 				<div id="container2"></div>
 				<div id="container3"></div>
@@ -49,11 +50,172 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 		foreach($resultAll as $result){
 			// echo($result['suhu']);'<br>';
 
+			// array_push($data_suhu, array($result['suhu']));
 			array_push($data_suhu,array(strtotime($result['waktu']),$result['suhu']));
-			
 		}
 		// die (json_encode($data_suhu));
 		?>
+
+		<!-- <script>
+			Highcharts.chart('container', {
+
+title: {
+	text: 'Solar Employment Growth by Sector, 2010-2016'
+},
+
+subtitle: {
+	text: 'Source: thesolarfoundation.com'
+},
+
+yAxis: {
+	title: {
+		text: 'Number of Employees'
+	}
+},
+
+xAxis: {
+	accessibility: {
+		rangeDescription: 'Range: 2010 to 2017'
+	}
+},
+
+legend: {
+	layout: 'vertical',
+	align: 'right',
+	verticalAlign: 'middle'
+},
+
+plotOptions: {
+	series: {
+		label: {
+			connectorAllowed: false
+		},
+		pointStart: 2010
+	}
+},
+
+series: [{
+	name: 'Installation',
+	data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+}, {
+	name: 'Manufacturing',
+	data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+}, {
+	name: 'Sales & Distribution',
+	data: [11744, 110000, 16005, 19771, 20185, 24377, 32147, 39387]
+}, {
+	name: 'Project Development',
+	data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+}, {
+	name: 'Other',
+	data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+}],
+
+responsive: {
+	rules: [{
+		condition: {
+			maxWidth: 500
+		},
+		chartOptions: {
+			legend: {
+				layout: 'horizontal',
+				align: 'center',
+				verticalAlign: 'bottom'
+			}
+		}
+	}]
+}
+
+});
+		</script> -->
+
+			<script>
+				var chart = new Highcharts.Chart({
+					  chart: {
+						 renderTo: 'container1'
+					  },
+					  title: {
+							text: 'Grafik Data Suhu'
+						},
+	   
+					xAxis: {
+						title: {
+						   enabled: true,
+						   text: 'Hours of the Day'
+						   },
+						   type: 'datetime',
+						   showFirstLabel:true,
+						   showLastLabel:true,
+						//    min:Date.UTC(2020,1,25),
+						//    minRange: 24 * 360 * 100,
+						   dateTimeLabelFormats : {
+							   hour: '%I %p',
+							   minute: '%I:%M %p',
+							   month: '%e. %b',
+            					year: '%b'
+							   }
+					},
+					series: [{
+							name: "Suhu",
+							data: [
+								[Date.UTC(1970, 10, 25), 0],
+								// [Date.UTC(<?php echo json_encode($data_suhu);?>)],
+								[Date.UTC(1970, 11,  6), 0.25],
+								[Date.UTC(1970, 11, 20), 1.41],
+								[Date.UTC(1970, 11, 25), 1.64],
+								[Date.UTC(1971, 0,  4), 1.6],
+								[Date.UTC(1971, 0, 17), 2.55],
+								[Date.UTC(1971, 0, 24), 2.62],
+								[Date.UTC(1971, 1,  4), 2.5],
+								[Date.UTC(1971, 1, 14), 2.42],
+								[Date.UTC(1971, 2,  6), 2.74],
+								[Date.UTC(1971, 2, 14), 2.62],
+								[Date.UTC(1971, 2, 24), 2.6],
+								[Date.UTC(1971, 3,  1), 2.81],
+								[Date.UTC(1971, 3, 11), 2.63],
+								[Date.UTC(1971, 3, 27), 2.77],
+								[Date.UTC(1971, 4,  4), 2.68],
+								[Date.UTC(1971, 4,  9), 2.56],
+								[Date.UTC(1971, 4, 14), 2.39],
+								[Date.UTC(1971, 4, 19), 2.3],
+								[Date.UTC(1971, 5,  4), 2],
+								[Date.UTC(1971, 5,  9), 1.85],
+								[Date.UTC(1971, 5, 14), 1.49],
+								[Date.UTC(1971, 5, 19), 1.27],
+								[Date.UTC(1971, 5, 24), 0.99],
+								[Date.UTC(1971, 5, 29), 0.67],
+								[Date.UTC(1971, 6,  3), 0.18],
+								[Date.UTC(1971, 6,  4), 0]
+							]
+						}],
+
+						responsive: {
+									rules: [{
+										condition: {
+											maxWidth: 500
+										},
+										chartOptions: {
+											legend: {
+												layout: 'horizontal',
+												align: 'center',
+												verticalAlign: 'bottom'
+											}
+										}
+									}]
+							}
+
+
+					//   series: [{
+					// 	name : "SUHU",
+					// 	data: [
+					// 		<?php echo json_encode($data_suhu);?>
+					// 		]
+					//   }],
+			   });
+			 </script>
+
+
+
 			<!-- <script>
 				var chart = new Highcharts.Chart({
 					  chart: {
@@ -81,346 +243,4 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 						data: [<?php echo json_encode($data_suhu);?>]
 					  }]
 			   });
-			 </script> -->
-
-<script>
-				var chart = new Highcharts.Chart({
-					  chart: {
-						 renderTo: 'container1'
-					  },
-					  title: {
-							text: 'Grafik Data Suhu'
-						},
-	   
-					xAxis: {
-						title: {
-						   enabled: true,
-						   text: 'Hours of the Day'
-						   },
-						   type: 'datetime',
-						   showFirstLabel:true,
-						   showLastLabel:true,
-						   
-						   dateTimeLabelFormats : {
-							   hour: '%I %p',
-							   minute: '%I:%M %p'
-							   }
-					},
-					  series: [{	
-						data: [<?php echo json_encode($data_suhu);?>]
-					  }]
-			   });
 			 </script>
-			 
-			
-<!-- 
-			 <script>
-				var chart = new Highcharts.Chart({
-					  chart: {
-						 renderTo: 'container2'
-					  },
-					  title: {
-							text: 'Grafik Data Kelembapan Udara'
-						},
-	   
-					xAxis: {
-						title: {
-						   enabled: true,
-						   text: 'Hours of the Day'
-						   },
-						   type: 'datetime',
-						   showFirstLabel:true,
-						   showLastLabel:true,
-						   min:Date.UTC(2020,1,25),
-						   minRange: 24 * 360 * 100,
-						   dateTimeLabelFormats : {
-							   hour: '%I %p',
-							   minute: '%I:%M %p'
-							   }
-					},
-					  series: [{	
-					   	pointInterval: 900 * 1000,
-						 pointStart:Date.UTC(2020,1,25,), 
-						// data: [10, 7, 9, 15]
-						data: [<?php echo "$result[kelembapan_udara]";?>]
-					  }]
-			   });
-		   </script>
-
-<script>
-				var chart = new Highcharts.Chart({
-					  chart: {
-						 renderTo: 'container3'
-					  },
-					  title: {
-							text: 'Grafik Data Kelembapan Tanah'
-						},
-	   
-					xAxis: {
-						title: {
-						   enabled: true,
-						   text: 'Hours of the Day'
-						   },
-						   type: 'datetime',
-						   showFirstLabel:true,
-						   showLastLabel:true,
-						   min:Date.UTC(2020,1,25),
-						   minRange: 24 * 360 * 100,
-						   dateTimeLabelFormats : {
-							   hour: '%I %p',
-							   minute: '%I:%M %p'
-							   }
-					},
-					  series: [{	
-					   	pointInterval: 900 * 1000,
-						 pointStart:Date.UTC(2020,1,25,), 
-						// data: [10, 7, 9, 15]
-						data: [<?php echo "$result[kelembapan_tanah]";?>]
-					  }]
-			   });
-		   </script>
-<script>
-				var chart = new Highcharts.Chart({
-					  chart: {
-						 renderTo: 'container4'
-					  },
-					  title: {
-							text: 'Grafik Data pH'
-						},
-	   
-					xAxis: {
-						title: {
-						   enabled: true,
-						   text: 'Hours of the Day'
-						   },
-						   type: 'datetime',
-						   showFirstLabel:true,
-						   showLastLabel:true,
-						   min:Date.UTC(2020,1,25),
-						   minRange: 24 * 360 * 100,
-						   dateTimeLabelFormats : {
-							   hour: '%I %p',
-							   minute: '%I:%M %p'
-							   }
-					},
-					  series: [{	
-					   	pointInterval: 900 * 1000,
-						 pointStart:Date.UTC(2020,1,25,), 
-						// data: [10, 7, 9, 15]
-						data: [<?php echo "$result[ph]";?>]
-					  }]
-			   });
-		   </script> -->
-<!-- $(function () {
-  var chart = new Highcharts.Chart({
-
-    chart: {
-      renderTo: 'container',
-      type: 'line'
-    },
-    title: {
-      text: 'Windspeed & Direction',
-      x: -20 //center
-    },
-    subtitle: {
-      text: 'User Submitted',
-      x: -20
-    },
-    credits: {
-      enabled: false
-    },
-    legend: {
-      enabled: false
-    },
-    xAxis: {
-      type: 'datetime',
-      showFirstLabel:true,
-      showLastLabel:true,
-      min:Date.UTC(2012,11,31,6,0,0,0),
-      minRange: 24 * 3600 * 1000,
-      dateTimeLabelFormats: {
-        hour: '%H:%M',
-      }
-    },
-    yAxis: {
-      lineColor: '#999',
-      lineWidth: 1,
-      tickColor: '#666',
-      tickWidth: 1,
-      tickLength: 3,
-      gridLineColor: '#ddd',
-      title: {
-        text: 'Wind Speed (K)'
-      },
-    },
-    series: [{
-      pointInterval: 3600 * 1000,
-      pointStart:Date.UTC(2013,1,1,6,0,0,0),                            
-      data: [12, 1, 3, 7, 14, 50]
-    }]
-
-  });
-}); -->
-
-<!-- <script>
-var data_ph = <?php echo $result['ph']; ?>;
-  var chart = new Highcharts.Chart({
-
-    chart: {
-      renderTo: 'container',
-      type: 'line'
-    },
-    title: {
-      text: 'Windspeed & Direction',
-      x: -20 //center
-    },
-    subtitle: {
-      text: 'User Submitted',
-      x: -20
-    },
-    credits: {
-      enabled: false
-    },
-    legend: {
-      enabled: false
-    },
-    xAxis: {
-      type: 'datetime',
-      showFirstLabel:true,
-      showLastLabel:true,
-      min:Date.UTC(2012,11,31,6,0,0,0),
-      minRange: 24 * 3600 * 1000,
-      dateTimeLabelFormats: {
-        hour: '%H:%M',
-      }
-    },
-    yAxis: {
-      lineColor: '#999',
-      lineWidth: 1,
-      tickColor: '#666',
-      tickWidth: 1,
-      tickLength: 3,
-      gridLineColor: '#ddd',
-      title: {
-        text: 'Wind Speed (K)'
-      },
-    },
-    series: [{
-      pointInterval: 3600 * 1000,
-      pointStart:Date.UTC(2012,11,31,6,0,0,0),
-      data: [data_ph]
-    }]
-
-  });
-});
-</script> -->
-
-<!-- <script>
-Highcharts.chart('container1', {
-
-chart: {
-	scrollablePlotArea: {
-		minWidth: 700
-	}
-},
-
-data: {
-	csvURL: 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/analytics.csv',
-	beforeParse: function (csv) {
-		return csv.replace(/\n\n/g, '\n');
-	}
-},
-
-title: {
-	text: 'Daily sessions at www.highcharts.com'
-},
-
-subtitle: {
-	text: 'Source: Google Analytics'
-},
-
-xAxis: {
-	tickInterval: 7 * 24 * 3600 * 1000, // one week
-	tickWidth: 0,
-	gridLineWidth: 1,
-	labels: {
-		align: 'left',
-		x: 3,
-		y: -3
-	}
-},
-
-yAxis: [{ // left y axis
-	title: {
-		text: null
-	},
-	labels: {
-		align: 'left',
-		x: 3,
-		y: 16,
-		format: '{value:.,0f}'
-	},
-	showFirstLabel: false
-}, { // right y axis
-	linkedTo: 0,
-	gridLineWidth: 0,
-	opposite: true,
-	title: {
-		text: null
-	},
-	labels: {
-		align: 'right',
-		x: -3,
-		y: 16,
-		format: '{value:.,0f}'
-	},
-	showFirstLabel: false
-}],
-
-legend: {
-	align: 'left',
-	verticalAlign: 'top',
-	borderWidth: 0
-},
-
-tooltip: {
-	shared: true,
-	crosshairs: true
-},
-
-plotOptions: {
-	series: {
-		cursor: 'pointer',
-		point: {
-			events: {
-				click: function (e) {
-					hs.htmlExpand(null, {
-						pageOrigin: {
-							x: e.pageX || e.clientX,
-							y: e.pageY || e.clientY
-						},
-						headingText: this.series.name,
-						maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) + ':<br/> ' +
-							this.y + ' sessions',
-						width: 200
-					});
-				}
-			}
-		},
-		marker: {
-			lineWidth: 1
-		}
-	}
-},
-
-series: [{
-	name: 'All sessions',
-	lineWidth: 4,
-	marker: {
-		radius: 4
-	}
-}, {
-	name: 'New users'
-}]
-});
-</script> -->

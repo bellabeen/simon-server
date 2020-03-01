@@ -83,8 +83,7 @@ Highcharts.chart('container', {
             [Date.UTC(1971, 6,  3), 0.18],
             [Date.UTC(1971, 6,  4), 0]
         ]
-    }
-       ],
+    }],
 
     responsive: {
         rules: [{
