@@ -7,7 +7,7 @@
 </head>
 <body>
 <script>
-Highcharts.chart('container', {
+Highcharts.chart('container1', {
     chart: {
         rendrerTo
         type: 'spline'
