@@ -30,7 +30,7 @@ $resultArray = isset($get['data']) ? $get['data'] : [];
 				</div>
 			</div>
 			<div class="col-md-6">
-				<p class="tebel">Tabel Data Suhu:</p>
+				<p class="tebel">Tabel Data Suhu</p>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">No</p></center></td>
