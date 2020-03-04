@@ -8,6 +8,7 @@ class Sensor{
     private $kelembapan_udara=null;
     private $kelembapan_tanah=null;  
     private $ph=null;  
+    public $tgl;
 
     function __construct(){
         if ($this->db ==  null){
@@ -106,6 +107,21 @@ class Sensor{
     function getAll(){
         // return "test";
         $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";
+        $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+        http_response_code(200);
+        $data = array();
+        while ($row = $hasil->fetch_assoc()){
+            $data[]=$row;
+        }
+        if(count($data)==0)
+            return array("msg"=>"Data Tidak Ada", "data"=>array());
+        
+        return array("data"=>$data);
+    }
+
+    function getWaktu(){
+        // return "test";
+        $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
         $data = array();
