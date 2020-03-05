@@ -1,14 +1,14 @@
 <?php
 
-include_once(__DIR__."/../lib/tanah.php");
+include_once(__DIR__."/../lib/udara.php");
 include_once(__DIR__."/../lib/DataFormat.php");
 header('Access-Control-Allow-Origin:*');
-$sensor = new Sensor();
+$sensor = new Udara();
 $format=new DataFormat();
 $get=$sensor->getAll();
-$filter = $sensor->getWaktu();
 
-// $resultArray = isset($get['data']) ? $get['data'] : [];
+
+$resultArray = isset($get['data']) ? $get['data'] : [];
 // $resultArray = isset($filter['data']) ? $filter['data'] : [];
 
 ?>
@@ -51,23 +51,23 @@ $filter = $sensor->getWaktu();
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">Waktu</p></center></td>
 					</thead>
 					<tbody>
-					<!-- <?php
+					<?php
 					$no=0;
 					foreach($resultArray as $result){
 						$no++;
 						echo 
 						"<tr>
 						<td><center>$no</center></td>
-						<td><center>$result[suhu]</center></td>
+						<td><center>$result[humidity]</center></td>
 						<td><center>$result[kelembapan_udara]</center></td>
 						<td><center>$result[kelembapan_tanah]</center></td>
 						<td><center>$result[ph]</center></td>
 						<td><center>$result[waktu]</center></td>
 						</tr>";
 						}
-						?> -->
+						?>
 						
-						<?php
+						<!-- <?php
 						$no=0;
 						// $sensor->getAll();
 						// $sensor->getWaktu();
@@ -94,7 +94,7 @@ $filter = $sensor->getWaktu();
 							</tr>";
 							}
 						
-						?>
+						?> -->
 						
 
 					</tbody>
