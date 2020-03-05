@@ -21,3 +21,4 @@ $sensor->setValue($humidity, $temperature, $resistansi_hidrogen_sulfida, $nilai_
 $nilai_gas_lpg, $nilai_asap, $nilai_karbonmonoksida, $nilai_gas_metana, $konsentrasi_debu);
 $result = $sensor->create();
 ?>
+
