@@ -1,6 +1,6 @@
 <?php
 include_once (__DIR__ . "/DB.php");
-class Sensor{
+class Udara{
     private $table_name='log';
     private $db = null;
     public  $id;
