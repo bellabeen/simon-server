@@ -11,7 +11,7 @@ class Sensor{
  }
  
  function connect(){
-    $this->link = mysqli_connect('168.63.250.142','bellabeen','kepoajalu_1851') 
+    $this->link = mysqli_connect('localhost','bellabeen','kepoajalu_1851') 
     or die('Cannot connect to the DB');
     mysqli_select_db($this->link,'3074218_latihanarjun') or die('Cannot select the DB');
  }
