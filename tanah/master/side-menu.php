@@ -18,7 +18,7 @@
             <td><span class="glyphicon glyphicon-th-list"></span><a href="./tables.php" style="text-decoration:none;"> Tabel</a></td>
         </tr>
         <tr>
-            <td><span class="glyphicon glyphicon-stats"></span><a href="./stats.php" style="text-decoration:none;"> Statistik</td>
+            <td><span class="glyphicon glyphicon-stats"></span><a href="./stats.php" style="text-decoration:none;"> Grafik</td>
         </tr>
     <tbody>
 </table>

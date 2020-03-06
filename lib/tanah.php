@@ -106,7 +106,7 @@ class Sensor{
     
     function getAll(){
         // return "test";
-        $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";
+        $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu DSC";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
         $data = array();
@@ -119,20 +119,20 @@ class Sensor{
         return array("data"=>$data);
     }
 
-    function getWaktu(){
-        // return "test";
-        $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
-        $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
-        http_response_code(200);
-        $data = array();
-        while ($row = $hasil->fetch_assoc()){
-            $data[]=$row;
-        }
-        if(count($data)==0)
-            return array("msg"=>"Data Tidak Ada", "data"=>array());
+    // function getWaktu(){
+    //     // return "test";
+    //     $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
+    //     $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+    //     http_response_code(200);
+    //     $data = array();
+    //     while ($row = $hasil->fetch_assoc()){
+    //         $data[]=$row;
+    //     }
+    //     if(count($data)==0)
+    //         return array("msg"=>"Data Tidak Ada", "data"=>array());
         
-        return array("data"=>$data);
-    }
+    //     return array("data"=>$data);
+    // }
 
     function getAllFilter(){
         // return "test";
@@ -212,23 +212,23 @@ class Sensor{
         return array("msg"=>"success", "data"=>$data);
     }
 
-    ///fungsi delete data
-    function delete($id){
-        // return "test";
-        $data="";
-        $row = $this->getSensorPilihan($id);
-        if (count($row["data"])==0) {
-            http_response_code(304);
-            return array("msg"=>$row["msg"]."id ".$id);
-            return array('msg'=>$kueri);
-        }
+    // ///fungsi delete data
+    // function delete($id){
+    //     // return "test";
+    //     $data="";
+    //     $row = $this->getSensorPilihan($id);
+    //     if (count($row["data"])==0) {
+    //         http_response_code(304);
+    //         return array("msg"=>$row["msg"]."id ".$id);
+    //         return array('msg'=>$kueri);
+    //     }
 
-        $kueri = "DELETE FROM ".$this->table_name;
-        $kueri .=" WHERE id='".$id  ."'";
-        $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+    //     $kueri = "DELETE FROM ".$this->table_name;
+    //     $kueri .=" WHERE id='".$id  ."'";
+    //     $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
 
-        http_response_code(200);
-        return array("msg"=>"success");
-    }
+    //     http_response_code(200);
+    //     return array("msg"=>"success");
+    // }
 
 }
