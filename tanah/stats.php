@@ -54,10 +54,10 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 		$data_ph = array();
 		foreach($resultAll as $result){
 
-			array_push($data_suhu, array(strtotime($result['waktu']),(float) $result['suhu']));
-			array_push($data_kelembapanudara, array(strtotime($result['waktu']), (float) $result['kelembapan_udara']));
-			array_push($data_kelembapantanah, array(strtotime($result['waktu']), (float) $result['kelembapan_tanah']));
-			array_push($data_ph, array(strtotime($result['waktu']), (float) $result['ph']));
+			array_push($data_suhu, array(strtotime($result['waktu']) * 1000,(float) $result['suhu']));
+			array_push($data_kelembapanudara, array(strtotime($result['waktu']) * 1000, (float) $result['kelembapan_udara']));
+			array_push($data_kelembapantanah, array(strtotime($result['waktu']) * 1000, (float) $result['kelembapan_tanah']));
+			array_push($data_ph, array(strtotime($result['waktu']) * 1000, (float) $result['ph']));
 
 		}
 		// die (json_encode($data_suhu));
