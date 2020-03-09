@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: 04 Mar 2020 pada 18.26
--- Versi Server: 5.7.29-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.3
+-- Host: 127.0.0.1
+-- Generation Time: Mar 09, 2020 at 06:32 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.3.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,36 +25,69 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log`
+-- Table structure for table `log`
 --
 
 CREATE TABLE `log` (
   `id` bigint(20) NOT NULL,
   `humidity` float DEFAULT NULL,
   `temperature` float DEFAULT NULL,
-  `resistansi_hidrogen_sulfida` float DEFAULT NULL,
-  `nilai_hidrogen_sulfida` float DEFAULT NULL,
-  `nilai_amonia_sulfida_benzena` float DEFAULT NULL,
-  `resistansi_amonia_sulfida_benzena` float DEFAULT NULL,
-  `nilai_gas_lpg` float DEFAULT NULL,
-  `nilai_asap` float DEFAULT NULL,
-  `nilai_karbonmonoksida` float DEFAULT NULL,
-  `nilai_gas_metana` float DEFAULT NULL,
+  `gas_dan_asap` float DEFAULT NULL,
+  `co` float DEFAULT NULL,
+  `amonia` float DEFAULT NULL,
+  `hidrogen_sulfida` float DEFAULT NULL,
   `konsentrasi_debu` float NOT NULL,
-  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `log`
+-- Dumping data for table `log`
 --
 
-INSERT INTO `log` (`id`, `humidity`, `temperature`, `resistansi_hidrogen_sulfida`, `nilai_hidrogen_sulfida`, `nilai_amonia_sulfida_benzena`, `resistansi_amonia_sulfida_benzena`, `nilai_gas_lpg`, `nilai_asap`, `nilai_karbonmonoksida`, `nilai_gas_metana`, `konsentrasi_debu`, `date`) VALUES
-(909, 1111, 2000, 10, 11, 12, 10, 11, 20, 11, 12, 12, '2020-03-03 08:30:59');
+INSERT INTO `log` (`id`, `humidity`, `temperature`, `gas_dan_asap`, `co`, `amonia`, `hidrogen_sulfida`, `konsentrasi_debu`, `date`) VALUES
+(916, 12, 10, 11, 20, 81, 12, 12, '2020-03-08 19:52:11'),
+(917, 12, 10, 11, 20, 81, 12, 12, '2020-03-08 19:52:16'),
+(918, 102, 10, 11, 20, 81, 12, 12, '2020-03-08 19:53:16'),
+(919, 0, 0, 10.54, 59.89, 23.3, 115.26, 0.04, '2020-03-09 05:00:11'),
+(920, 0, 0, 10.54, 59.89, 23.3, 115.96, 0.04, '2020-03-09 05:00:19'),
+(921, 0, 0, 10.63, 60.62, 23.46, 115.96, 0.04, '2020-03-09 05:00:50'),
+(922, 0, 0, 10.63, 60.62, 23.62, 115.96, 0.16, '2020-03-09 05:01:01'),
+(923, 0, 0, 11.01, 62.09, 24.28, 117.39, 0.05, '2020-03-09 05:02:23'),
+(924, 0, 0, 10.91, 62.09, 24.11, 116.67, 0.05, '2020-03-09 05:02:58'),
+(925, 0, 0, 10.72, 61.72, 23.95, 116.67, 0.04, '2020-03-09 05:03:16'),
+(926, 0, 0, 10.72, 62.09, 24.11, 116.67, 0.04, '2020-03-09 05:03:46'),
+(927, 0, 0, 10.82, 62.09, 24.28, 117.39, 0.04, '2020-03-09 05:04:13'),
+(928, 0, 0, 11.39, 63.6, 25.12, 118.11, 0.05, '2020-03-09 05:05:09'),
+(929, 0, 0, 11.1, 63.22, 24.61, 117.39, 0.13, '2020-03-09 05:05:35'),
+(930, 0, 0, 11.79, 64.75, 25.63, 118.83, 0.16, '2020-03-09 05:06:47'),
+(931, 0, 0, 11.69, 64.75, 25.46, 118.11, 0.16, '2020-03-09 05:07:55'),
+(932, 0, 0, 11.59, 64.36, 25.12, 118.11, 0.05, '2020-03-09 05:08:19'),
+(933, 0, 0, 11.69, 64.75, 25.29, 117.39, 0.16, '2020-03-09 05:09:33'),
+(934, 0, 0, 12.39, 68.34, 26.69, 121.77, 0.05, '2020-03-09 05:10:42'),
+(935, 0, 0, 13.24, 65.93, 25.98, 121.03, 0.05, '2020-03-09 05:11:17'),
+(936, 0, 0, 12.71, 68.34, 27.05, 122.52, 0.05, '2020-03-09 05:11:32'),
+(937, 0, 0, 13.02, 69.57, 27.41, 123.28, 0.06, '2020-03-09 05:12:37'),
+(938, 0, 0, 12.71, 68.75, 27.05, 122.52, 0.06, '2020-03-09 05:13:26'),
+(939, 0, 0, 12.71, 69.16, 27.05, 122.52, 0.05, '2020-03-09 05:13:35'),
+(940, 0, 0, 8.37, 60.98, 20.98, 109.79, 0.03, '2020-03-09 05:15:03'),
+(941, 0, 0, 8.7, 61.35, 21.58, 109.79, 0.03, '2020-03-09 05:15:36'),
+(942, 0, 0, 8.45, 60.62, 21.13, 109.79, 0.03, '2020-03-09 05:15:42'),
+(943, 0, 0, 8.62, 62.09, 21.73, 112.49, 0.03, '2020-03-09 05:17:31'),
+(944, 0, 0, 8.54, 61.72, 21.58, 112.49, 0.04, '2020-03-09 05:17:45'),
+(945, 0, 0, 8.62, 61.72, 21.73, 113.17, 0.03, '2020-03-09 05:18:22'),
+(946, 0, 0, 8.78, 61.35, 21.89, 113.17, 0.03, '2020-03-09 05:18:56'),
+(947, 0, 0, 8.7, 60.25, 21.73, 112.49, 0.03, '2020-03-09 05:20:30'),
+(948, 0, 0, 8.87, 60.62, 21.89, 113.17, 0.03, '2020-03-09 05:21:24'),
+(949, 0, 0, 8.87, 60.25, 21.89, 112.49, 0.16, '2020-03-09 05:21:54'),
+(950, 0, 0, 8.78, 60.25, 21.89, 111.8, 0.16, '2020-03-09 05:23:41'),
+(951, 0, 0, 8.78, 59.18, 21.89, 107.81, 0.03, '2020-03-09 05:29:12'),
+(952, 0, 0, 8.62, 58.82, 21.58, 107.16, 0.03, '2020-03-09 05:29:39'),
+(953, 0, 0, 8.7, 58.47, 21.58, 107.16, 0.03, '2020-03-09 05:30:09');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tanah`
+-- Table structure for table `tanah`
 --
 
 CREATE TABLE `tanah` (
@@ -61,11 +96,11 @@ CREATE TABLE `tanah` (
   `kelembapan_tanah` float DEFAULT NULL,
   `kelembapan_udara` float DEFAULT NULL,
   `ph` float DEFAULT NULL,
-  `waktu` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tanah`
+-- Dumping data for table `tanah`
 --
 
 INSERT INTO `tanah` (`id`, `suhu`, `kelembapan_tanah`, `kelembapan_udara`, `ph`, `waktu`) VALUES
@@ -210,12 +245,15 @@ ALTER TABLE `tanah`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=910;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=954;
+
 --
 -- AUTO_INCREMENT for table `tanah`
 --
 ALTER TABLE `tanah`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
