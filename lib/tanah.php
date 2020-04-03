@@ -141,10 +141,10 @@ class Sensor{
     //     return array("data"=>$data);
     // }
 
-    function getAllWaktu($tgl){
+    function getAllWaktu($tglawal,$tglakhir){
         // return "test";
         //$kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%Y-%m-%d' ) AS waktu FROM ".$this->table_name." WHERE waktu='".$tgl."'";
-        $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%Y-%m-%d' ) AS waktu FROM tanah WHERE waktu BETWEEN '$tgl 00:00:00' AND '$tgl 23:59:59'";
+        $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu BETWEEN '$tglawal 00:00:00' AND '$tglakhir 23:59:59'";
 		
 		// $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
         // $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";

@@ -4,9 +4,6 @@ include_once(__DIR__."/../lib/DataFormat.php");
 header('Access-Control-Allow-Origin:*');
 $sensor = new Sensor();
 $format=new DataFormat();
-$getAll=$sensor->getAll();
-$resultAll= isset($getAll['data']) ? $getAll['data'] : [];
-$resultAll = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 ?>
 <html>
 	<head>
@@ -32,11 +29,18 @@ $resultAll = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 				</div>
 			</div>
 
-		<p class="tebel">Tabel Data Log</p>
-				<form method="get">
+			<!-- <form method="get">
 			<label>PILIH TANGGAL</label>
-			<input type="date" name="waktu">
+			<input type="date" name="tanggal">
 			<input type="submit" value="FILTER">
+		</form> -->
+		<form method="get">
+			<label>PILIH TANGGAL AWAL</label>
+			<input type="date" name="tanggalawal">
+			<label>PILIH TANGGAL AKHIR</label>
+			<input type="date" name="tanggalakhir">
+			<input type="submit" value="SUBMIT" >
+		</form>
 
 			<div class="col-md-6">
 				<div id="container1"></div>
@@ -61,27 +65,24 @@ $resultAll = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 		<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
 
 		<?php
+		if(isset($_GET['tanggalawal']) AND isset($_GET['tanggalakhir'])){
+			$tglawal = $_GET['tanggalawal'];
+			$tglakhir = $_GET['tanggalakhir'];
+			$getAllWaktu=$sensor->getAllWaktu($tglawal,$tglakhir);
+			$resultAll = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
+			// echo var_dump($resultAll);
+		} else{
+			$getAll=$sensor->getAll();
+			$resultAll= isset($getAll['data']) ? $getAll['data'] : [];
+			// echo var_dump($resultAll);	
+		}
+		
+
 		$data_suhu = array();
 		$data_kelembapanudara = array();
 		$data_kelembapantanah = array();
 		$data_ph = array();
-		// if(isset($_GET['waktu'])){
-		// 	$tgl = $_GET['waktu'];
-		// 	$getAllWaktu=$sensor->getAllWaktu($tgl);
-		// 	$sql = $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
-		// } else{
-		// 	$sql = $resultArray = isset($getAll['data']) ? $getAll['data'] : [];
-		// }
-		// foreach($sql as $result){
-		
-		if(isset($_GET['waktu'])){
-			$tgl = $_GET['waktu'];
-			$getAllWaktu=$sensor->getAllWaktu($tgl);
-			$sql = $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
-		} else{
-			$sql = $resultArray = isset($getAll['data']) ? $getAllWaktu['data'] : [];
-		}
-		foreach($sql as $result){
+		foreach($resultAll as $result){
 
 			array_push($data_suhu, array(strtotime($result['waktu']) * 1000,(float) $result['suhu']));
 			array_push($data_kelembapanudara, array(strtotime($result['waktu']) * 1000, (float) $result['kelembapan_udara']));
