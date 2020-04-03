@@ -106,29 +106,11 @@ class Sensor{
         }
     }
     
-    // function getAll(){
-    //     // return "test";
-    //     // $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
-    //     // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
-    //     $kueri = "SELECT * FROM ".$this->table_name."";
-    //     $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
-    //     http_response_code(200);
-    //     $data = array();
-    //     while ($row = $hasil->fetch_assoc()){
-    //         $data[]=$row;
-    //     }
-    //     if(count($data)==0)
-    //         return array("msg"=>"Data Tidak Ada", "data"=>array());
-        
-    //     return array("data"=>$data);
-    // }
-
-
     function getAll(){
         // return "test";
         // $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
         // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
-        $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu BETWEEN".$this->tanggalawal." AND ".$this->tanggalakhir." ORDER BY id ASC";
+        $kueri = "SELECT * FROM ".$this->table_name."";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
         $data = array();
@@ -140,6 +122,24 @@ class Sensor{
         
         return array("data"=>$data);
     }
+
+
+    // function getAll(){
+    //     // return "test";
+    //     // $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
+    //     // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
+    //     $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu BETWEEN".$this->tanggalawal." AND ".$this->tanggalakhir." ORDER BY id ASC";
+    //     $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+    //     http_response_code(200);
+    //     $data = array();
+    //     while ($row = $hasil->fetch_assoc()){
+    //         $data[]=$row;
+    //     }
+    //     if(count($data)==0)
+    //         return array("msg"=>"Data Tidak Ada", "data"=>array());
+        
+    //     return array("data"=>$data);
+    // }
 
     function getAllWaktu(){
         // return "test";
