@@ -141,10 +141,12 @@ class Sensor{
     //     return array("data"=>$data);
     // }
 
-    function getAllWaktu(){
+    function getAllWaktu($tgl){
         // return "test";
-        $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%Y-%m-%d' ) AS waktu FROM ".$this->table_name." WHERE waktu='".$this->tgl."'";
-        // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
+        //$kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%Y-%m-%d' ) AS waktu FROM ".$this->table_name." WHERE waktu='".$tgl."'";
+        $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%Y-%m-%d' ) AS waktu FROM tanah WHERE waktu BETWEEN '$tgl 00:00:00' AND '$tgl 23:59:59'";
+		
+		// $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
         // $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);

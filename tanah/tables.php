@@ -5,7 +5,6 @@ header('Access-Control-Allow-Origin:*');
 $sensor = new Sensor();
 $format=new DataFormat();
 $getAll=$sensor->getAll();
-$getAllWaktu=$sensor->getAllWaktu();
 // $filter = $sensor->getWaktu();
 
 $resultArray = isset($getAll['data']) ? $getAll['data'] : [];
@@ -56,19 +55,16 @@ $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 					<tbody>
 					<?php
 					$no = 0;
+					
 					if(isset($_GET['waktu'])){
 						$tgl = $_GET['waktu'];
+						$getAllWaktu=$sensor->getAllWaktu($tgl);
 						$sql = $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 					} else{
 						$sql = $resultArray = isset($getAll['data']) ? $getAll['data'] : [];
 					}
-					$data_suhu = array();
-					$data_kelembapanudara = array();
-					$data_kelembapantanah = array();
-					$data_ph = array();
 					foreach($sql as $result){
 						$no++;
-
 
 						echo 
 						"<tr>

@@ -6,6 +6,7 @@ $sensor = new Sensor();
 $format=new DataFormat();
 $getAll=$sensor->getAll();
 $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
+$resultAll = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 ?>
 <html>
 	<head>
@@ -31,17 +32,11 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 				</div>
 			</div>
 
-			<!-- <form method="get">
+		<p class="tebel">Tabel Data Log</p>
+				<form method="get">
 			<label>PILIH TANGGAL</label>
-			<input type="date" name="tanggal">
+			<input type="date" name="waktu">
 			<input type="submit" value="FILTER">
-		</form> -->
-
-		<label>PILIH TANGGAL AWAL</label>
-		<input type="date" name="tanggalawal">
-		<label>PILIH TANGGAL AKHIR</label>
-		<input type="date" name="tanggalakhir">
-		<input type="submit" value="SUBMIT" >
 
 			<div class="col-md-6">
 				<div id="container1"></div>
@@ -70,7 +65,23 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 		$data_kelembapanudara = array();
 		$data_kelembapantanah = array();
 		$data_ph = array();
-		foreach($resultAll as $result){
+		// if(isset($_GET['waktu'])){
+		// 	$tgl = $_GET['waktu'];
+		// 	$getAllWaktu=$sensor->getAllWaktu($tgl);
+		// 	$sql = $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
+		// } else{
+		// 	$sql = $resultArray = isset($getAll['data']) ? $getAll['data'] : [];
+		// }
+		// foreach($sql as $result){
+		
+		if(isset($_GET['waktu'])){
+			$tgl = $_GET['waktu'];
+			$getAllWaktu=$sensor->getAllWaktu($tgl);
+			$sql = $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
+		} else{
+			$sql = $resultArray = isset($getAll['data']) ? $getAllWaktu['data'] : [];
+		}
+		foreach($sql as $result){
 
 			array_push($data_suhu, array(strtotime($result['waktu']) * 1000,(float) $result['suhu']));
 			array_push($data_kelembapanudara, array(strtotime($result['waktu']) * 1000, (float) $result['kelembapan_udara']));
