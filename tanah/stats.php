@@ -30,6 +30,19 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
   					</div>
 				</div>
 			</div>
+
+			<!-- <form method="get">
+			<label>PILIH TANGGAL</label>
+			<input type="date" name="tanggal">
+			<input type="submit" value="FILTER">
+		</form> -->
+
+		<label>PILIH TANGGAL AWAL</label>
+		<input type="date" name="tanggalawal">
+		<label>PILIH TANGGAL AKHIR</label>
+		<input type="date" name="tanggalakhir">
+		<input type="submit" value="SUBMIT" >
+
 			<div class="col-md-6">
 				<div id="container1"></div>
 				<div id="container2"></div>
@@ -47,7 +60,12 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 		<script type="text/javascript" src="./include/js/bootstrap.js"></script>
 		<script type="text/javascript" src="./include/js/Chart.js"></script>
 		<script type="text/javascript" src="./include/js/Chart.bundle.js"></script>
-	<?php
+		<script src="https://code.highcharts.com/stock/highstock.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+		<?php
 		$data_suhu = array();
 		$data_kelembapanudara = array();
 		$data_kelembapantanah = array();
@@ -195,8 +213,7 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 								}
 						},
 						series: [{
-							
-							
+						
 						 	// pointStart:Date.UTC(2020,1,25,), 
 							data: 
 								<?php echo json_encode($data_ph);?>

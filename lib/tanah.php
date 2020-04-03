@@ -8,7 +8,9 @@ class Sensor{
     private $kelembapan_udara=null;
     private $kelembapan_tanah=null;  
     private $ph=null;  
-    public $tgl;
+    public $tgl = null;
+    public $tanggalawal;
+    public $tanggalakhir;
 
     function __construct(){
         if ($this->db ==  null){
@@ -104,9 +106,29 @@ class Sensor{
         }
     }
     
+    // function getAll(){
+    //     // return "test";
+    //     // $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
+    //     // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
+    //     $kueri = "SELECT * FROM ".$this->table_name."";
+    //     $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+    //     http_response_code(200);
+    //     $data = array();
+    //     while ($row = $hasil->fetch_assoc()){
+    //         $data[]=$row;
+    //     }
+    //     if(count($data)==0)
+    //         return array("msg"=>"Data Tidak Ada", "data"=>array());
+        
+    //     return array("data"=>$data);
+    // }
+
+
     function getAll(){
         // return "test";
-        $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";
+        // $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
+        // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
+        $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu BETWEEN".$this->tanggalawal." AND ".$this->tanggalakhir." ORDER BY id ASC";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
         $data = array();
@@ -119,20 +141,36 @@ class Sensor{
         return array("data"=>$data);
     }
 
-    // function getWaktu(){
-    //     // return "test";
-    //     $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
-    //     $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
-    //     http_response_code(200);
-    //     $data = array();
-    //     while ($row = $hasil->fetch_assoc()){
-    //         $data[]=$row;
-    //     }
-    //     if(count($data)==0)
-    //         return array("msg"=>"Data Tidak Ada", "data"=>array());
+    function getAllWaktu(){
+        // return "test";
+        $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%Y-%m-%d' ) AS waktu FROM ".$this->table_name." WHERE waktu='".$this->tgl."'";
+        // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
+        // $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";
+        $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+        http_response_code(200);
+        $data = array();
+        while ($row = $hasil->fetch_assoc()){
+            $data[]=$row;
+        }
+        if(count($data)==0)
+            return array("msg"=>"Data Tidak Ada", "data"=>array());
         
-    //     return array("data"=>$data);
-    // }
+        return array("data"=>$data);
+    }
+
+    function getAllDate(){
+        $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
+        $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+        http_response_code(200);
+        $data = array();
+        while ($row = $hasil->fetch_assoc()){
+            $data[]=$row;
+        }
+        if(count($data)==0)
+            return array("msg"=>"Data Tidak Ada", "data"=>array());
+        
+        return array("data"=>$data);
+    }
 
     function getAllFilter(){
         // return "test";
@@ -162,7 +200,6 @@ class Sensor{
                     return array("msg"=>"Data Tidak Ada", "data"=>array());
                 return array("data"=>$data);
     }
-
 
     function getpH(){
         // SELECT ph FROM table ORDER BY DESC LIMIT 1

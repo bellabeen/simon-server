@@ -4,11 +4,15 @@ include_once(__DIR__."/../lib/DataFormat.php");
 header('Access-Control-Allow-Origin:*');
 $sensor = new Sensor();
 $format=new DataFormat();
-$get=$sensor->getAll();
+$getAll=$sensor->getAll();
+$getAllWaktu=$sensor->getAllWaktu();
 // $filter = $sensor->getWaktu();
 
-$resultArray = isset($get['data']) ? $get['data'] : [];
-// $resultArray = isset($filter['data']) ? $filter['data'] : [];
+$resultArray = isset($getAll['data']) ? $getAll['data'] : [];
+$resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
+
+// print_r($resultArrayWaktu);
+
 
 ?>
 <html>
@@ -34,12 +38,12 @@ $resultArray = isset($get['data']) ? $get['data'] : [];
 			</div>
 			<div class="col-md-6">
 				
-				<!-- <form method="get">
-				<label>Pilih Waktu</label>
-				<input type="date" name="waktu">
-				<input type="submit" value="Filter">
-				</form> -->
 				<p class="tebel">Tabel Data Log</p>
+				<form method="get">
+			<label>PILIH TANGGAL</label>
+			<input type="date" name="waktu">
+			<input type="submit" value="FILTER">
+		</form>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px">No</p></center></td>
@@ -51,9 +55,21 @@ $resultArray = isset($get['data']) ? $get['data'] : [];
 					</thead>
 					<tbody>
 					<?php
-					$no=0;
-					foreach($resultArray as $result){
+					$no = 0;
+					if(isset($_GET['waktu'])){
+						$tgl = $_GET['waktu'];
+						$sql = $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
+					} else{
+						$sql = $resultArray = isset($getAll['data']) ? $getAll['data'] : [];
+					}
+					$data_suhu = array();
+					$data_kelembapanudara = array();
+					$data_kelembapantanah = array();
+					$data_ph = array();
+					foreach($sql as $result){
 						$no++;
+
+
 						echo 
 						"<tr>
 						<td><center>$no</center></td>
@@ -63,8 +79,9 @@ $resultArray = isset($get['data']) ? $get['data'] : [];
 						<td><center>$result[ph]</center></td>
 						<td><center>$result[waktu]</center></td>
 						</tr>";
-						}
-						?>						
+						
+					}
+						?>			
 
 					</tbody>
 				</table>
