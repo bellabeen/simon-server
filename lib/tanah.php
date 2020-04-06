@@ -160,7 +160,7 @@ class Sensor{
         return array("data"=>$data);
     }
 
-    function getAllDate(){
+    function getAllDate($tgl){
         $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);

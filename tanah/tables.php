@@ -39,9 +39,16 @@ $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 				
 				<p class="tebel">Tabel Data Log</p>
 				<form method="get">
+			<label>PILIH TANGGAL AWAL</label>
+			<input type="date" name="tanggalawal">
+			<label>PILIH TANGGAL AKHIR</label>
+			<input type="date" name="tanggalakhir">
+			<input type="submit" value="SUBMIT" >
+		</form>
+				<!-- <form method="get">
 			<label>PILIH TANGGAL</label>
 			<input type="date" name="waktu">
-			<input type="submit" value="FILTER">
+			<input type="submit" value="FILTER"> -->
 		</form>
 				<table class="table table-striped table-bordered">
 					<thead>
@@ -56,9 +63,10 @@ $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 					<?php
 					$no = 0;
 					
-					if(isset($_GET['waktu'])){
-						$tgl = $_GET['waktu'];
-						$getAllWaktu=$sensor->getAllWaktu($tgl);
+					if(isset($_GET['tanggalawal']) AND isset($_GET['tanggalakhir'])){
+						$tglawal = $_GET['tanggalawal'];
+						$tglakhir = $_GET['tanggalakhir'];
+						$getAllWaktu=$sensor->getAllWaktu($tglawal,$tglakhir);
 						$sql = $resultArray = isset($getAllWaktu['data']) ? $getAllWaktu['data'] : [];
 					} else{
 						$sql = $resultArray = isset($getAll['data']) ? $getAll['data'] : [];
