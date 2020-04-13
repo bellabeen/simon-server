@@ -1,8 +1,7 @@
 <?php
-include_once(__DIR__."/../lib/udara.php");
-include_once(__DIR__."/../lib/DataFormat.php");
+include_once(__DIR__."/../../lib/udara.php");
+include_once(__DIR__."/../../lib/DataFormat.php");
 header("Access-Control-Allow-Methods: POST");
-
 
 
 $sensor = new Sensor();
@@ -23,7 +22,4 @@ $result = $sensor->create();
 // $format= new DataFormat();
 // echo $format->asJSON($result);
 
-
 ?>
-
-

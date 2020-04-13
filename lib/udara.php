@@ -20,7 +20,7 @@ class Sensor{
 
     function setValue($humidity, $temperature, $gas_dan_asap, $co, $amonia, $hidrogen_sulfida, $konsentrasi_debu){
         // $this();
-        $this->id = $id;
+        //$this->id = $id;
         $this->humidity = $humidity;
         $this->temperature= $temperature;
         $this->gas_dan_asap = $gas_dan_asap;
@@ -125,10 +125,9 @@ class Sensor{
         }
     }
     
-
     function getAll(){
         // return "test";
-        $kueri = "SELECT * FROM ".$this->table_name." ORDER BY id";
+        $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
         $data = array();
@@ -138,23 +137,25 @@ class Sensor{
         if(count($data)==0)
             return array("msg"=>"Data Tidak Ada", "data"=>array());
         
-        return array("msg"=>"success", "data"=>$data);
+        return array("data"=>$data);
     }
 
 
-    function getHumidity(){
+	   function getAllFilter(){
         // return "test";
-        $kueri = "SELECT HOUR(date) FROM ".$this->table_name." ORDER BY id";
+        $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu DESC LIMIT 1";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
         $data = array();
         while ($row = $hasil->fetch_assoc()){
             $data[]=$row;
         }
-        if (count($data)==0)
-            return array("msg"=>"Data tidak ada ", "data"=>array());
-        return array("msg"=>"success", "data"=>$data);
+        if(count($data)==0)
+            return array("msg"=>"Data Tidak Ada", "data"=>array());
+        
+        return array("data"=>$data);
     }
+
 
 
     function getSensorPilihan($id){
@@ -171,8 +172,6 @@ class Sensor{
             return array("msg"=>"Data tidak ada ", "data"=>array());
         return array("msg"=>"success", "data"=>$data);
     }
-    
-
     
 
 
