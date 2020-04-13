@@ -10,12 +10,9 @@ $gas_dan_asap = isset($_GET['gas_dan_asap']) ? $_GET['gas_dan_asap']: null;
 $co = isset($_GET['co']) ? $_GET['co']: null;
 $amonia = isset($_GET['amonia']) ? $_GET['amonia']: null;
 $hidrogen_sulfida = isset($_GET['hidrogen_sulfida']) ? $_GET['hidrogen_sulfida']: null;
-$konsentrasi_debu= isset($_GET['konsentrasi_debu']) ? $_GET['konsentrasi_debu']: null;
-
+$konsentrasi_debu = isset($_GET['konsentrasi_debu']) ? $_GET['konsentrasi_debu']: null;
 
 $sensor->setValue($humidity, $temperature, $gas_dan_asap, $co, $amonia, $hidrogen_sulfida, $konsentrasi_debu);
-
-
 $result = $sensor->create();
 
 ?>
