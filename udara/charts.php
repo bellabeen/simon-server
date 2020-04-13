@@ -1,6 +1,6 @@
 <?php
-include_once(__DIR__."/lib/udara.php");
-include_once(__DIR__."/lib/DataFormat.php");
+include_once(__DIR__."/../lib/udara.php");
+include_once(__DIR__."/../lib/DataFormat.php");
 header('Access-Control-Allow-Origin:*');
 $sensor = new Sensor();
 $format=new DataFormat();
@@ -13,14 +13,14 @@ $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SIMUDA - Charts</title>
-	<link rel="stylesheet" href="./assets/css/styles.css">
-	<link rel="stylesheet" href="./assets/css/bootstrap.css">
+	<link rel="stylesheet" href="include/assets/css/styles.css">
+	<link rel="stylesheet" href="include/assets/css/bootstrap.css">
 	
-	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="./assets/css/font-awesome.min.css" rel="stylesheet">
-	<link href="./assets/css/datepicker3.css" rel="stylesheet">
-	<link href="./assets/css/styles.css" rel="stylesheet">
-	<link rel="stylesheet" href="./assets/js/bootstrap.js">
+	<link href="include/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="include/assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="include/assets/css/datepicker3.css" rel="stylesheet">
+	<link href="include/assets/css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="include/assets/js/bootstrap.js">
 	
 	<Custom Fon>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -140,21 +140,21 @@ else { echo ", <b> Selamat Malam </b> </p>";}
 
 
 
-			<script src="./assets/js/jquery-1.11.1.min.js"></script>
-	<script src="./assets/js/bootstrap.min.js"></script>
-	<script src="./assets/js/chart.min.js"></script>
-	<script src="./assets/js/chart-data.js"></script>
-	<script src="./assets/js/easypiechart.js"></script>
-	<script src="./assets/js/easypiechart-data.js"></script>
-	<script src="./assets/js/bootstrap-datepicker.js"></script>
-	<script src="./assets/js/custom.js"></script>
+			<script src="include/assets/js/jquery-1.11.1.min.js"></script>
+	<script src="include/assets/js/bootstrap.min.js"></script>
+	<script src="include/assets/js/chart.min.js"></script>
+	<script src="include/assets/js/chart-data.js"></script>
+	<script src="include/assets/js/easypiechart.js"></script>
+	<script src="include/assets/js/easypiechart-data.js"></script>
+	<script src="include/assets/js/bootstrap-datepicker.js"></script>
+	<script src="include/assets/js/custom.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="./assets/js/modules/data.js"></script>
-	<script src="./assets/js/modules/exporting.js"></script>
-	<script src="./assets/js/highcharts.js"></script>
-	<script src="./assets/js/bootstrap.js"></script>
-	<script src="./assets/js/Chart.js"></script>
-	<script src="./assets/js/Chart.bundle.js"></script>
+	<script src="include/assets/js/modules/data.js"></script>
+	<script src="include/assets/js/modules/exporting.js"></script>
+	<script src="include/assets/js/highcharts.js"></script>
+	<script src="include/assets/js/bootstrap.js"></script>
+	<script src="include/assets/js/Chart.js"></script>
+	<script src="include/assets/js/Chart.bundle.js"></script>
 
 	<?php
 		$data_humidity = array();

@@ -1,6 +1,6 @@
 <?php
-include_once(__DIR__."/lib/udara.php");
-include_once(__DIR__."/lib/DataFormat.php");
+include_once(__DIR__."/../lib/udara.php");
+include_once(__DIR__."/../lib/DataFormat.php");
 $sensor = new Sensor();
 $format=new DataFormat();
 
@@ -20,16 +20,16 @@ $resultFilter = isset($getFilter['data']) ? $getFilter['data'] : [];
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SIMUDA - Dashboard</title>
 
-	<link rel="stylesheet" href="./assets/css/styles.css">
-	<link rel="stylesheet" href="./assets/css/bootstrap.css">
+	<link rel="stylesheet" href="include/assets/css/styles.css">
+	<link rel="stylesheet" href="include/assets/css/bootstrap.css">
 	
-	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="./assets/css/font-awesome.min.css" rel="stylesheet">
-	<link href="./assets/css/datepicker3.css" rel="stylesheet">
-	<link href="./assets/css/styles.css" rel="stylesheet">
-	<link rel="stylesheet" href="./assets/js/bootstrap.js">
-		<!-- <link rel="stylesheet" href="./assets/js/highchart.css">
-		<link rel="stylesheet" href="./assets/js/Chart.css"> -->
+	<link href="include/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="include/assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="include/assets/css/datepicker3.css" rel="stylesheet">
+	<link href="include/assets/css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="include/assets/js/bootstrap.js">
+		<!-- <link rel="stylesheet" href="include/assets/js/highchart.css">
+		<link rel="stylesheet" href="include/assets/js/Chart.css"> -->
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -162,14 +162,14 @@ else { echo ", <b> Selamat Malam </b> </p>";}
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 	
-	<script src="./assets/js/jquery-1.11.1.min.js"></script>
-	<script src="./assets/js/bootstrap.min.js"></script>
-	<script src="./assets/js/chart.min.js"></script>
-	<script src="./assets/js/chart-data.js"></script>
-	<script src="./assets/js/easypiechart.js"></script>
-	<script src="./assets/js/easypiechart-data.js"></script>
-	<script src="./assets/js/bootstrap-datepicker.js"></script>
-	<script src="./assets/js/custom.js"></script>
+	<script src="include/assets/js/jquery-1.11.1.min.js"></script>
+	<script src="include/assets/js/bootstrap.min.js"></script>
+	<script src="include/assets/js/chart.min.js"></script>
+	<script src="include/assets/js/chart-data.js"></script>
+	<script src="include/assets/js/easypiechart.js"></script>
+	<script src="include/assets/js/easypiechart-data.js"></script>
+	<script src="include/assets/js/bootstrap-datepicker.js"></script>
+	<script src="include/assets/js/custom.js"></script>
 	<script>
 		window.onload = function () {
 	var chart1 = document.getElementById("line-chart").getContext("2d");
