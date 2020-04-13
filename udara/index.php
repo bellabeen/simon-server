@@ -1,28 +1,35 @@
 <?php
-include_once(__DIR__."./lib/udara.php");
-include_once(__DIR__."./lib/DataFormat.php");
-header('Access-Control-Allow-Origin:*');
+include_once(__DIR__."/lib/udara.php");
+include_once(__DIR__."/lib/DataFormat.php");
 $sensor = new Sensor();
 $format=new DataFormat();
 
 $getAll=$sensor->getAll();
 $resultAll= isset($getAll['data']) ? $getAll['data'] : [];
 
-
 $getFilter=$sensor->getAllFilter();
 $resultFilter = isset($getFilter['data']) ? $getFilter['data'] : [];
+
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- <meta http-equiv="refresh" content="60"> -->
+	<meta http-equiv="refresh" content="60">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SIMUDA - Dashboard</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/datepicker3.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<link rel="stylesheet" href="./assets/css/bootstrap.css">
+	
+	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="./assets/css/datepicker3.css" rel="stylesheet">
+	<link href="./assets/css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="./assets/js/bootstrap.js">
+		<!-- <link rel="stylesheet" href="./assets/js/highchart.css">
+		<link rel="stylesheet" href="./assets/js/Chart.css"> -->
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -51,11 +58,8 @@ echo "Selamat Siang, Semangat Menjalankan Aktifitas !";}
 else if (($a>15) && ($a<=18)){
 echo "Selamat Sore";}
 else { echo ", <b> Selamat Malam </b> </p>";}
-?>  
-
-
-
-		
+// print_r($resultAll);
+?>  	
 	<div class="col-sm-8 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -85,6 +89,9 @@ else { echo ", <b> Selamat Malam </b> </p>";}
 					
 				}
 			?>
+
+
+			
 		<div class="row">
 			<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
@@ -155,14 +162,14 @@ else { echo ", <b> Selamat Malam </b> </p>";}
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 	
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/chart.min.js"></script>
-	<script src="js/chart-data.js"></script>
-	<script src="js/easypiechart.js"></script>
-	<script src="js/easypiechart-data.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="./assets/js/jquery-1.11.1.min.js"></script>
+	<script src="./assets/js/bootstrap.min.js"></script>
+	<script src="./assets/js/chart.min.js"></script>
+	<script src="./assets/js/chart-data.js"></script>
+	<script src="./assets/js/easypiechart.js"></script>
+	<script src="./assets/js/easypiechart-data.js"></script>
+	<script src="./assets/js/bootstrap-datepicker.js"></script>
+	<script src="./assets/js/custom.js"></script>
 	<script>
 		window.onload = function () {
 	var chart1 = document.getElementById("line-chart").getContext("2d");
