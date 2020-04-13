@@ -2,8 +2,6 @@
 include_once(__DIR__."/../../lib/udara.php");
 include_once(__DIR__."/../../lib/DataFormat.php");
 header("Access-Control-Allow-Methods: POST");
-
-
 $sensor = new Sensor();
 
 $humidity = isset($_GET['humidity']) ? $_GET['humidity']: null;
@@ -19,7 +17,5 @@ $sensor->setValue($humidity, $temperature, $gas_dan_asap, $co, $amonia, $hidroge
 
 
 $result = $sensor->create();
-// $format= new DataFormat();
-// echo $format->asJSON($result);
 
 ?>

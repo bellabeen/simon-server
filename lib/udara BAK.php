@@ -11,7 +11,6 @@ class Sensor{
     private $amonia=null;
     private $hidrogen_sulfida=null;
     private $konsentrasi_debu=null;
-
     function __construct(){
         if ($this->db ==  null){
             $conn = new DB();
@@ -21,14 +20,14 @@ class Sensor{
 
     function setValue($humidity, $temperature, $gas_dan_asap, $co, $amonia, $hidrogen_sulfida, $konsentrasi_debu){
         // $this();
-        // $this->id = $id;
+        //$this->id = $id;
         $this->humidity = $humidity;
-        $this->temperature = $temperature;
+        $this->temperature= $temperature;
         $this->gas_dan_asap = $gas_dan_asap;
         $this->co = $co;
-		$this->amonia = $amonia;
-		$this->hidrogen_sulfida = $hidrogen_sulfida;
-		$this->konsentrasi_debu = $konsentrasi_debu;
+        $this->amonia = $amonia;
+        $this->hidrogen_sulfida = $hidrogen_sulfida;
+        $this->konsentrasi_debu = $konsentrasi_debu;
 
     }
 
@@ -47,10 +46,10 @@ class Sensor{
             $kueri = "INSERT INTO ".$this->table_name." SET ";
             $kueri .= "humidity='".$this->humidity ."',";
             $kueri .= "temperature='".$this->temperature ."',";
-			$kueri .= "gas_dan_asap='".$this->gas_dan_asap ."',";
-			$kueri .= "co='".$this->co ."',";
+            $kueri .= "gas_dan_asap='".$this->gas_dan_asap ."',";
+            $kueri .= "co='".$this->co ."',";
 			$kueri .= "amonia='".$this->amonia ."',";
-			$kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida ."',";
+            $kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida ."',";
             $kueri .= "konsentrasi_debu='".$this->konsentrasi_debu."'";
             $hasil = $this->db->query($kueri);
             if ($hasil) {
@@ -65,7 +64,8 @@ class Sensor{
     }
 
     //fungsi update data
-    function update($humidity, $temperature, $gas_dan_asap, $co, $amonia, $hidrogen_sulfida, $konsentrasi_debu){
+    function update($id,$humidity=null, $temperature=null, $gas_dan_asap=null, $co=null, $amonia=null,
+	$hidrogen_sulfida=null, $konsentrasi_debu=null){
         $hasil= $this->getSensorPilihan($id);
         $count=count($hasil["data"]);
         if ($count==0){ 
@@ -79,39 +79,39 @@ class Sensor{
             $this->setValue($hasil["data"][0]["humidity"],
             $hasil["data"][0]["temperature"],
             $hasil["data"][0]["gas_dan_asap"],
-			$hasil["data"][0]["co"],
-			$hasil["data"][0]["amonia"],
-			$hasil["data"][0]["hidrogen_sulfida"],
+            $hasil["data"][0]["co"],
+            $hasil["data"][0]["amonia"],
+            $hasil["data"][0]["hidrogen_sulfida"],
             $hasil["data"][0]["konsentrasi_debu"]
                     );
 
-            if ($humidity!=null) $this->suhu=$suhu;
+            if ($humidity!=null) $this->humidity=$humidity;
             if ($temperature!=null) $this->temperature=$temperature;
             if ($gas_dan_asap!=null) $this->gas_dan_asap=$gas_dan_asap;
             if ($co!=null) $this->co=$co;
-			if ($amonia!=null) $this->amonia=$amonia;
-			if ($hidrogen_sulfida!=null) $this->hidrogen_sulfida=$hidrogen_sulfida;
-			if ($konsentrasi_debu!=null) $this->konsentrasi_debu=$konsentrasi_debu;
+            if ($amonia!=null) $this->amonia=$amonia;
+            if ($hidrogen_sulfida!=null) $this->hidrogen_sulfida=$hidrogen_sulfida;
+            if ($konsentrasi_debu!=null) $this->konsentrasi_debu=$konsentrasi_debu;
+
 
             $kueri .= "humidity='".$this->humidity ."',";
             $kueri .= "temperature='".$this->temperature ."',";
             $kueri .= "gas_dan_asap='".$this->gas_dan_asap ."',";
-			            $kueri .= "co='".$this->co ."',";
-						            $kueri .= "amonia='".$this->amonia ."',";
-									            $kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida ."',";
-												
-            $kueri .= "konsentrasi_debu='".$this->konsentrasi_debu."'";
+            $kueri .= "co='".$this->co ."',";
+            $kueri .= "amonia='".$this->amonia ."',";
+            $kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida ."',";
+            $kueri .= "konsentrasi_debu='".$this->konsentrasi_debu ."',";
+
 
 
             $kueri = "UPDATE ".$this->table_name." SET ";
             $kueri .= "humidity='".$this->humidity ."',";
-            $kueri .= "temperature='".$this->temperature."',";
-            $kueri .= "gas_dan_asap='".$this->gas_dan_asap."',";
-			$kueri .= "co='".$this->co."',";
-			$kueri .= "amonia='".$this->amonia."',";
-			$kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida."',";
-            $kueri .= "konsentrasi_debu='".$this->konsentrasi_debu ."'";
-            
+            $kueri .= "temperature='".$this->temperature ."',";
+            $kueri .= "gas_dan_asap='".$this->gas_dan_asap ."',";
+            $kueri .= "co='".$this->co ."',";
+            $kueri .= "amonia='".$this->amonia ."',";
+            $kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida ."',";
+            $kueri .= "konsentrasi_debu='".$this->konsentrasi_debu ."',";
             $kueri .= " WHERE id='".$this->id."'";
             $hasil = $this->db->query($kueri);
             if ($hasil){
@@ -127,9 +127,7 @@ class Sensor{
     
     function getAll(){
         // return "test";
-        // $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
-        // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
-        $kueri = "SELECT * FROM ".$this->table_name."";
+        $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
         $data = array();
@@ -141,8 +139,9 @@ class Sensor{
         
         return array("data"=>$data);
     }
-	
-		   function getAllFilter(){
+
+
+	   function getAllFilter(){
         // return "test";
         $kueri = "SELECT * FROM ".$this->table_name." ORDER BY waktu DESC LIMIT 1";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
@@ -156,6 +155,7 @@ class Sensor{
         
         return array("data"=>$data);
     }
+
 
 
     function getSensorPilihan($id){
@@ -172,6 +172,26 @@ class Sensor{
             return array("msg"=>"Data tidak ada ", "data"=>array());
         return array("msg"=>"success", "data"=>$data);
     }
+    
 
+
+    ///fungsi delete data
+    function delete($id){
+        // return "test";
+        $data="";
+        $row = $this->getSensorPilihan($id);
+        if (count($row["data"])==0) {
+            http_response_code(304);
+            return array("msg"=>$row["msg"]."id ".$id);
+            return array('msg'=>$kueri);
+        }
+
+        $kueri = "DELETE FROM ".$this->table_name;
+        $kueri .=" WHERE id='".$id  ."'";
+        $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
+
+        http_response_code(200);
+        return array("msg"=>"success");
+    }
 
 }
