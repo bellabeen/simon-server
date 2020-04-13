@@ -2,7 +2,7 @@
 include_once(__DIR__."/../../lib/udara.php");
 include_once(__DIR__."/../../lib/DataFormat.php");
 header("Access-Control-Allow-Methods: POST");
-$sensor = new Udara();
+$sensor = new Sensor();
 
 $humidity = isset($_GET['humidity']) ? $_GET['humidity']: null;
 $temperature = isset($_GET['temperature']) ? $_GET['temperature']: null;

@@ -6,7 +6,7 @@ include_once(__DIR__."/../../lib/DataFormat.php");
 header('Access-Control-Allow-Origin:*');
 $sensor = new Sensor();
 if(isset($_GET['id'])){
-    $data=$sensor->getSensorPilihan($_GET['id']);
+    $data=$sensor->getUdaraPilihan($_GET['id']);
 } else {
     $data=$sensor->getAll();
 }
