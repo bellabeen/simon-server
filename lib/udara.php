@@ -96,10 +96,9 @@ class Udara{
             $kueri .= "humidity='".$this->humidity ."',";
             $kueri .= "temperature='".$this->temperature ."',";
             $kueri .= "gas_dan_asap='".$this->gas_dan_asap ."',";
-			            $kueri .= "co='".$this->co ."',";
-						            $kueri .= "amonia='".$this->amonia ."',";
-									            $kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida ."',";
-												
+			$kueri .= "co='".$this->co ."',";
+			$kueri .= "amonia='".$this->amonia ."',";
+			$kueri .= "hidrogen_sulfida='".$this->hidrogen_sulfida ."',";									
             $kueri .= "konsentrasi_debu='".$this->konsentrasi_debu."'";
 
 
@@ -126,9 +125,6 @@ class Udara{
     }
     
     function getAll(){
-        // return "test";
-        // $kueri = "SELECT id, suhu, kelembapan_tanah, kelembapan_udara, ph, DATE_FORMAT(waktu, '%d-%m-%Y' ) AS waktu FROM ".$this->table_name." ORDER BY waktu";
-        // $kueri = "SELECT * FROM ".$this->table_name." WHERE waktu = '$tgl'";
         $kueri = "SELECT * FROM ".$this->table_name."";
         $hasil = $this->db->query($kueri) or die ("Error ".$this->db->connect_error);
         http_response_code(200);
