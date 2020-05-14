@@ -57,7 +57,7 @@ $resultWaktu = isset($getWaktu['data']) ? $getWaktu['data']: [];
 			<div class="col-md-3">
 				<table class="table table-bordered">
 					<thead>
-						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">Kelembapan Udara</p></center></td>
+						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">Kelembapan Udara (RH)</p></center></td>
 					</thead>
 					<tr class="danger">
 					<td><center><p class="tebel gede" style="margin-top:5px"><?php echo "$result[kelembapan_udara]";?></p></center></td>
@@ -67,7 +67,7 @@ $resultWaktu = isset($getWaktu['data']) ? $getWaktu['data']: [];
 			<div class="col-md-3">
 				<table class="table table-bordered">
 					<thead>
-						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">Kelembapan Tanah</p></center></td>
+						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">Kelembapan Tanah (RH)</p></center></td>
 					</thead>
 					<tr class="info">
 					<td><center><p class="tebel gede" style="margin-top:5px"><?php echo "$result[kelembapan_tanah]";?></p></center></td>
@@ -77,7 +77,7 @@ $resultWaktu = isset($getWaktu['data']) ? $getWaktu['data']: [];
 			<div class="col-md-3">
 				<table class="table table-bordered">
 					<thead>
-						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">pH</p></center></td>
+						<td><center><p class="tebel" style="margin-top:0px; margin-bottom:0px; font-size:18px">pH (pH)</p></center></td>
 					</thead>
 					<tr class="warning">
 					<td><center><p class="tebel gede" style="margin-top:5px"><?php echo "$result[ph]";?></p></center></td>
