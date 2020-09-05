@@ -109,10 +109,18 @@ else { echo ", <b> Selamat Malam </b> </p>";}
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<--!<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
 						<h4>Gas LPG</h4>
+						<div class="easypiechart" ><span class="percent"><?php echo "$result[gas_dan_asap]";?> <b> Ppm </b></span></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Asap</h4>
 						<div class="easypiechart" ><span class="percent"><?php echo "$result[gas_dan_asap]";?> <b> Ppm </b></span></div>
 					</div>
 				</div>

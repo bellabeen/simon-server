@@ -15,9 +15,6 @@
 		<ul class="nav menu">
 			<li class="active"><a href="index.php"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="charts.php"><em class="fa fa-bar-chart">&nbsp;</em>Grafik</a></li>
-			<li><a href="http://ilkom.unila.ac.id/">Jurusan</a></p>
-			<li><a href="http://unila.ac.id/">Universitas Lampung</a></p>
-			<li><a href="">Gallery</a></p>
 		</ul>
 	</div><!--/.sidebar-->
 </body>
